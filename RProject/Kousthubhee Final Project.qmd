@@ -1,0 +1,576 @@
+---
+title: "Retail Store Sales Analytics Report"
+author: "Kousthubhee Krishna Kotte" 
+date: "`r Sys.Date()`"
+format:
+  html:
+    toc: true  
+    toc-depth: 5
+    toc-location: left
+    code-fold: show 
+    code-tools: true
+    fig-align: center 
+    fig-width: 8 
+    embed-resources: true
+execute:
+  echo: true 
+  warning: false
+  message: false
+---
+
+## Introduction
+
+The Retail Store Sales dataset contains **12,575 rows** and **11 columns** of data representing sales transactions from a retail store. The dataset includes eight product categories with 25 items per category, each having static prices.
+
+In the highly competitive retail industry, businesses rely on data analytics to optimize inventory, maximize sales, and improve customer engagement and customer satisfaction. The retail store faces challenges such as overstocking, understocking, and inefficient resource allocation, which can lead to lost sales and increased operational costs. The analysis of sales data is required to address these challenges.
+
+This report explores sales data from retail stores, applying business analytics techniques to uncover key insights.
+
+## Methodology
+
+This analysis follows a structured approach:
+
+1.  **Data Loading & Cleaning**: Importing and preparing the dataset.
+
+2.  **Exploratory Data Analysis (EDA)**: Understanding sales trends and customer behavior.
+
+3.  **Business Analytics Techniques**: Applying statistical methods for decision-making.
+
+4.  **Visualizations**: Presenting key insights through graphs.
+
+5.  **Cross-Language Integration**: Using Python within Quarto for additional insights.
+
+6.  **RSQLite**: Interaction with SQLite database to query and retrieve data.
+
+#### R Package dependencies:
+
+-   readr
+-   dplyr
+-   janitor
+-   lubridate
+-   RSQLite
+-   gt
+-   ggplot2
+-   reshape2
+-   png
+-   reticulate
+
+#### Python Package dependencies:
+
+-   pandas
+-   matplotlib
+
+## Load the Dataset into R
+
+```{r}
+# Load necessary libraries
+library(readr)
+
+# Load the dataset
+sales_data <- read_csv("retail_store_sales.csv")
+
+# View the first few rows
+head(sales_data)
+```
+
+## Data Cleaning
+
+```{r}
+library(dplyr)
+library(janitor)
+sales_data <- sales_data |>
+  clean_names()
+
+# Remove empty columns and rows
+sales_data <- sales_data |>
+  remove_empty("cols") |>
+  remove_empty("rows")
+```
+
+### Handling missing values
+
+```{r}
+# Define a function to replace NA values based on conditions
+replace_na_values <- function(df) {
+  df <- df |>
+    mutate(
+      price_per_unit = if_else(
+        is.na(price_per_unit) & !is.na(total_spent) & !is.na(quantity),
+        total_spent / quantity,
+        price_per_unit
+      ),
+      total_spent = if_else(
+        is.na(total_spent) & !is.na(price_per_unit) & !is.na(quantity),
+        price_per_unit * quantity,
+        total_spent
+      ),
+      quantity = if_else(
+        is.na(quantity) & !is.na(total_spent) & !is.na(price_per_unit),
+        total_spent / price_per_unit,
+        quantity
+      )
+    )
+  
+  # Replace with 0 when any 2 of the three columns are NA
+  df <- df |>
+    mutate(
+      price_per_unit = if_else(is.na(price_per_unit) & (is.na(total_spent) | is.na(quantity)), 0, price_per_unit),
+      total_spent = if_else(is.na(total_spent) & (is.na(price_per_unit) | is.na(quantity)), 0, total_spent),
+      quantity = if_else(is.na(quantity) & (is.na(total_spent) | is.na(price_per_unit)), 0, quantity)
+    )
+  return(df)
+}
+
+# Apply the function to replace NA values
+sales_data <- replace_na_values(sales_data)
+
+
+# Replace NA values in numeric columns with 0 and in character columns with "Unknown"
+sales_data <- sales_data |>
+  mutate(across(where(is.numeric), ~if_else(is.na(.), 0, .))) |>
+  mutate(across(where(is.character), ~if_else(is.na(.), "Unknown", .))) |>
+  mutate(discount_applied = ifelse(is.na(discount_applied), FALSE, discount_applied))
+
+colSums(is.na(sales_data))
+```
+
+### Handling duplicate records
+
+```{r}
+# Remove duplicate rows
+sales_data <- sales_data[!duplicated(sales_data), ]
+
+sum(duplicated(sales_data))
+```
+
+### Handling date format
+
+```{r}
+# Convert dates to Date type if applicable
+library(lubridate)
+
+sales_data$transaction_date <- as.Date(sales_data$transaction_date, format="%Y-%m-%d")
+
+glimpse(sales_data)
+```
+
+## Exploratory Data Analysis (EDA)
+
+### Summary Statistics
+
+Summary statistics provide the concise overview of the dataset, to understand the central tendencies, variability, and overall distribution of the data.
+
+1.  Metrics like the average (mean) and median price give insights into the typical price point of products sold.
+
+2.  The average quantity sold provides an idea of how many units are typically sold per transaction.
+
+3.  Total revenue gives a clear picture of the overall financial performance of the store.
+
+4.  By comparing the mean and median, we can detect skewness in the data, which might indicate outliers or specific trends.
+
+```{r}
+
+library(gt)
+
+
+# Generate summary statistics
+summary_table <- sales_data |> 
+  summarise(
+    Avg_Price = mean(price_per_unit, na.rm = TRUE),
+    Median_Price = median(price_per_unit, na.rm = TRUE),
+    Avg_Quantity = mean(quantity, na.rm = TRUE),
+    Total_Revenue = sum(total_spent, na.rm = TRUE)
+  ) |> 
+  gt() |> 
+  tab_header(
+    title = "Summary of Sales Data",
+    subtitle = "Key Metrics for Retail Store Sales"
+  ) |> 
+  fmt_number(columns = everything(), decimals = 2)
+
+summary_table
+```
+
+### Correlation Analysis
+
+Correlation analysis is used to evaluate the strength and direction of the relationship between variables. In the context of retail store data, it helps identify how different factors (e.g., price, quantity, and total spending) influence each other.
+
+```{r}
+correlation_matrix <- select(sales_data, where(is.numeric)) |> cor(use = "complete.obs")
+correlation_matrix
+
+
+```
+
+The correlation matrix provided reveals the relationships between **price per unit**, **quantity sold**, and **total spent** by customers.
+
+1\. **Price per Unit vs. Quantity Sold**
+
+-   **Correlation Coefficient**: **0.0079**
+-   **Interpretation**: The correlation between price per unit and quantity sold is **very weak (close to 0)**. This suggests that changes in the price of products have almost no impact on the quantity sold.
+-   **Insight**: Customers are not highly sensitive to price changes when deciding how many units to purchase. This could indicate that the store's products are either essential items or that customers prioritize factors other than price (e.g., brand loyalty, product quality).
+
+2\. **Price per Unit vs. Total Spent**
+
+-   **Correlation Coefficient**: **0.5880**
+-   **Interpretation**: There is a **moderate positive correlation** between price per unit and total spent. This means that as the price per unit increases, the total amount spent by customers also tends to increase.
+
+3\. **Quantity Sold vs. Total Spent**
+
+-   **Correlation Coefficient**: **0.7401**
+-   **Interpretation**: There is a **strong positive correlation** between quantity sold and total spent. This indicates that customers who buy more units tend to spend more overall.
+
+### ANOVA: Sales by different store locations
+
+ANOVA (Analysis of Variance) is used to compare the means of two or more groups to determine if there are statistically significant differences between them. In this case, the ANOVA test was conducted to analyze whether **sales** differ significantly across **different store locations**.
+
+```{r}
+anova_results <- aov(total_spent ~ location, data = sales_data)
+summary(anova_results)
+
+
+```
+
+**F-value and p-value**
+
+-   **F-value**: The F-value is **1.75**, which measures the ratio of the variance between groups (location) to the variance within groups (residuals). A higher F-value indicates a greater difference between groups.
+-   **p-value**: The p-value is **0.186**, which is greater than the common significance level of **0.05**.
+
+The p-value of **0.186** suggests that there is **no statistically significant difference** in sales across the different store locations. In other words, the variation in sales between locations is likely due to random chance rather than any inherent differences in the locations themselves.
+
+The **Sum of Squares** for location (16,299) is relatively small compared to the total variation (117,112,146). This indicates that the location explains only a tiny fraction of the total variability in sales.
+
+### Chi-Square Test of Independence
+
+Pearson's Chi-squared test is used to determine whether there is a significant association between two categorical variables. In this case, the test was conducted to evaluate the relationship between two categorical variables.
+
+```{r}
+table_data <- table(sales_data$category, sales_data$payment_method)
+chi_square_results <- chisq.test(table_data)
+chi_square_results
+
+```
+
+-   The p-value of **0.1015** is greater than the common significance level of **0.05**. This indicates that there is **no statistically significant association** between the two categorical variables being tested.
+
+-   The Chi-squared statistic (**21.006**) measures the discrepancy between the observed and expected frequencies in the contingency table. A higher value indicates a greater difference between observed and expected frequencies. However, since the p-value is not significant, this discrepancy is likely due to random variation rather than a true association.
+
+-   The degrees of freedom (**14**) are determined by the number of categories in the two variables. It reflects the number of independent pieces of information used to calculate the test statistic.
+
+# Visualizations
+
+## Sales Trends Over Time
+
+```{r}
+library(ggplot2)
+
+sales_data$transaction_date <- as.Date(sales_data$transaction_date)
+
+# Aggregate sales data by date
+daily_sales <- aggregate(total_spent ~ transaction_date, data = sales_data, FUN = sum)
+
+# Create the line chart
+ggplot(daily_sales, aes(x = transaction_date, y = total_spent)) +
+  geom_line(group = 1, color = "powderblue") +  
+  geom_point(color = "black", size = 1, alpha = 0.5) +  
+  geom_smooth(method = "loess", se = FALSE, color = "red") +
+  labs(title = "Total Sales Over Time",
+       x = "Date",
+       y = "Total Sales") +
+  theme_minimal()
+
+
+```
+
+The graph allows us to analyze the **trend in total sales** over the four-year period. This could indicate variability in customer demand, possibly influenced by seasonal trends, marketing campaigns, or external economic factors. Identifying these patterns can help in planning inventory and marketing strategies to boost sales during typically low periods.
+
+We observe that the store has consistent performance over the years, the peak sales being in 2024.
+
+## Sales Distribution by Category
+
+The bar graph represents the count of sales transactions across various product categories within the retail environment.
+
+```{r}
+ggplot(sales_data, aes(x = category, fill = category)) +
+  geom_bar() +
+  geom_text(stat='count', aes(label=after_stat(count)), position=position_stack(vjust=0.5), color="white") +
+  scale_fill_brewer(palette = "Paired") +
+  labs(title = "Sales Distribution by Category", x = "Category", y = "Count") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 1))
+```
+
+The graph shows a relatively even distribution of sales across the categories, suggesting a diverse product demand within the store. No single category dominates, indicating that the store serves a wide range of consumer needs.
+
+-   **Inventory and Marketing Focus:** The store might consider increasing marketing efforts or promotions for high-performing categories to maximize revenue, while also finding ways to elevate the lower-performing categories through strategic placement, discounts, or cross-promotions.
+
+-   **Product Placement:** Optimizing store layout by placing higher-selling categories in more accessible locations could potentially increase overall sales and customer satisfaction.
+
+-   **Customer Engagement:** Special events, tastings, or showcases could be used to boost interest in lower-performing categories, potentially increasing their sales.
+
+## Price Per Unit by Category
+
+The boxplot displays the distribution of prices within various product categories in a store. Each boxplot shows the interquartile range (IQR) of prices within a category, with the central line representing the median price. The whiskers extending from the boxes show the typical range of prices, excluding outliers.
+
+```{r}
+library(ggplot2)
+
+# Transposed Boxplot with Categories on the Y-axis and Prices on the X-axis
+ggplot(sales_data, aes(y = category, x = price_per_unit, fill = category)) +
+  geom_boxplot() +
+  scale_fill_brewer(palette = "Paired") +
+  labs(title = "Price Per Unit by Category", y = "Category", x = "Price Per Unit") +
+  theme_minimal() 
+
+```
+
+Categories like "Furniture" and "Butchers" show a wider IQR, indicating significant variability in the prices of products within these categories. This could be due to a diverse product range within these categories that varies greatly in quality or features.
+
+## Correlation Heatmap of Numeric Variables
+
+The heatmap depicts the pairwise correlation coefficients among several numeric variables in your dataset: total_spent, quantity, and price_per_unit.
+
+```{r}
+library(reshape2)
+
+cor_matrix <- sales_data |> 
+  select(where(is.numeric)) |> 
+  cor(use = "complete.obs")
+
+melted_cor <- melt(cor_matrix)
+
+ggplot(melted_cor, aes(x = Var1, y = Var2, fill = value)) +
+  geom_tile() +
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0) +
+  labs(title = "Correlation Heatmap of Numeric Variables") +
+  theme_minimal()
+
+```
+
+**Strong Positive Correlation**:
+
+The strongest correlation observed is between total_spent and quantity. This is indicated by a deep red color in the heatmap, suggesting a high positive correlation, likely close to 1. This implies that as the quantity of items purchased in a transaction increases, the total amount spent also increases proportionally.
+
+total_spent and price_per_unit also show a positive correlation, although slightly less strong than with quantity. This indicates that higher-priced items tend to increase the total spent, which is intuitive but suggests variability depending on the mix of products purchased.
+
+**Weak Correlation**:
+
+quantity and price_per_unit appear to have a weaker correlation compared to total_spent. The color suggests a positive correlation but not as strong. This could indicate that while there is a tendency for higher quantities to be associated with higher prices per unit, this relationship is less consistent and possibly influenced by the types of products being purchased. Symmetry:
+
+## Sales Distribution in R & Python
+
+::: callout-note
+Python dependencies
+
+```{r}
+system("pip install matplotlib pandas", intern = TRUE)
+```
+:::
+
+The graph represents the frequency distribution of the amount spent in transactions over a specific period. The histogram is plotted with 30 bins to provide a detailed view of how transaction values are spread.
+
+::: panel-tabset
+### R
+
+```{r}
+
+sales_data |> 
+  ggplot(aes(x = total_spent)) +
+  geom_histogram(bins = 30, fill = "purple", color = "black", alpha = 0.7) +
+  labs(title = "Distribution of Total Spent Per Transaction",
+       x = "Total Spent",
+       y = "Frequency") +
+  theme_minimal()
+```
+
+### Python
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the dataset 
+sales_data = r.sales_data
+
+# Create a histogram of total_spent
+plt.figure(figsize=(8,5))
+plt.hist(sales_data["total_spent"], bins=30, color='skyblue', edgecolor='black', alpha=0.7)
+
+# Add labels and title
+plt.xlabel("Total Spent")
+plt.ylabel("Frequency")
+plt.title("Distribution of Total Spent Per Transaction")
+
+# Show the plot
+plt.show()
+```
+:::
+
+The histogram peaks around a certain range, suggesting that most transactions occur within this typical spending bracket. This central range is where the majority of customer transactions are concentrated.
+
+The distribution appears right-skewed, indicating that while the majority of transactions are clustered around lower spending amounts, there are still a notable number of transactions that involve higher spending. This skewness towards the higher end suggests the presence of premium purchases or less frequent, high-value transactions.
+
+-   **Marketing Strategy:** Understanding the peak transaction ranges can aid in crafting targeted marketing campaigns that encourage customers to increase their spending to the next tier.
+
+-   **Customer Insight:** The distribution provides insights into customer spending habits, helping tailor customer service and product offerings to meet the prevalent spending behaviors.
+
+-   **Product Placement and Pricing:** The data suggests opportunities for strategic product placement and pricing adjustments to cater to the most common customer spending thresholds, potentially increasing overall sales effectiveness.
+
+## RFM Analysis
+
+RFM (Recency, Frequency, Monetary) analysis is a customer segmentation technique used in retail and marketing analytics to identify valuable customers based on their purchasing behavior. It helps businesses:
+
+1.  Identify high-value customers who contribute the most revenue.
+2.  Segment customers for targeted marketing campaigns.
+3.  Predict customer churn by analyzing engagement patterns.
+4.  Personalize promotions for different customer segments.
+
+```{r}
+
+compute_rfm <- function(data) {
+  tryCatch({
+    rfm_data <- data |>
+      group_by(customer_id) |>
+      summarise(Recency = as.numeric(Sys.Date() - max(transaction_date)),
+                Frequency = n(),
+                Monetary = sum(total_spent, na.rm = TRUE)) |>
+      mutate(R_score = ntile(-Recency, 5),
+             F_score = ntile(Frequency, 5),
+             M_score = ntile(Monetary, 5),
+             RFM_score = R_score * 100 + F_score * 10 + M_score)
+    
+    return(rfm_data)
+  }, error = function(e) {
+    message("Error in compute_rfm: ", e$message)
+    return(NULL)
+  })
+}
+
+rfm_scores <- compute_rfm(sales_data)
+head(rfm_scores)
+
+```
+
+We calculated three key metrics for each customer:
+
+-   **Recency (R)**: Days since the customer's last purchase (lower is better).
+
+-   **Frequency (F)**: Total number of purchases made (higher is better).
+
+-   **Monetary (M)**: Total amount spent (higher is better).
+
+Each metric was scored from 1 to 5, with:
+
+-   **R_score**: Lower values for more recent customers (e.g., 1 = old, 5 = recent).
+
+-   **F_score**: Higher values for more frequent customers (e.g., 1 = rare, 5 = frequent).
+
+-   **M_score**: Higher values for high-spending customers (e.g., 1 = low, 5 = high).
+
+The RFM score was computed by concatenating these three scores (e.g., 431 for CUST_01), allowing for segmentation into different customer categories.
+
+**Key Takeaways from the top 6 RFM Results**
+
+-   CUST_01 (431) - Recently active but moderate frequency and low monetary value. Likely a **new but engaged** customer.
+-   CUST_02 (224) - Not very recent, low frequency, but high spending. A **big spender at risk of churn**.
+-   CUST_03 (212) - Low recency, low frequency, and moderate spending. A **low-engagement** customer who may **need reactivation**.
+-   CUST_04 (413) - Recent but with low frequency and moderate spending. Could be a **new high-potential** customer.
+-   CUST_05 (155) - Very old but high frequency and high spending. A **loyal high-value** customer who should be nurtured.
+-   CUST_06 (211) - Low across all metrics, indicating a **low-value or inactive** customer.
+
+# Store Data in SQLite using RSQLite
+
+**Create connection**
+
+```{r}
+# Load SQLite library
+library(RSQLite)
+
+# Create a connection to the database
+conn <- dbConnect(SQLite(), "retail_store_sales.db")
+
+# Write data to SQLite database
+dbWriteTable(conn, "sales", sales_data, overwrite = TRUE, row.names = FALSE)
+```
+
+**Read the data and perform analysis**
+
+```{r}
+# Read data back from SQLite
+retrieved_data <- dbReadTable(conn, "sales")
+
+# SQL query to calculate total sales and average price per unit by category
+
+query <- "
+SELECT category, SUM(total_spent) AS total_sales, AVG(price_per_unit) AS average_price_per_unit
+FROM sales
+GROUP BY category
+ORDER BY total_sales DESC
+"
+# Execute the query and store the results
+analysis_results <- dbGetQuery(conn, query)
+
+head(analysis_results)
+```
+
+**Close the connection**
+
+```{r}
+# Close connection
+dbDisconnect(conn)
+
+```
+
+# Conclusion
+
+The **Retail Store Sales Analytics Report** provides a comprehensive analysis of sales data to uncover key insights and inform strategic decision-making. Through a structured approach involving data cleaning, exploratory data analysis (EDA), statistical methods, and visualizations, we have gained valuable insights into sales trends, customer behavior, and product performance.
+
+## Key Findings
+
+1.  **Sales Trends Over Time**:
+
+    -   Consistent sales performance with peak sales in 2024.
+    -   Seasonal variations indicate opportunities for targeted marketing campaigns.
+
+2.  **Sales Distribution by Category**:
+
+    -   Even distribution across categories, with **Electric household essentials** and **Food** performing strongly.
+    -   **Furniture** shows a wide price range, indicating diverse product offerings.
+
+3.  **Price Sensitivity**:
+
+    -   Weak correlation between price per unit and quantity sold; customers are not highly price-sensitive.
+    -   Moderate positive correlation between price per unit and total spent, suggesting higher-priced items boost revenue.
+
+4.  **Customer Segmentation (RFM Analysis)**:
+
+    -   Identified high-value customers, those at risk of churn, and low-engagement customers.
+    -   Enables targeted marketing to retain valuable customers and re-engage inactive ones.
+
+5.  **Statistical Tests**:
+
+    -   **ANOVA**: No significant difference in sales across store locations.
+    -   **Chi-squared Test**: No significant association between product categories and payment methods.
+
+6.  **SQLite Integration**:
+
+    -   Successfully stored and queried data using SQLite, enabling efficient data retrieval and analysis.
+
+## Recommendations for strategic business decisions:
+
+1.  **Focus on high-performing categories** for categories like "Beverages" and "Butchers" where sales volumes are high. Consider optimizing stock levels to prevent understocking during peak times.
+2.  **Adjust Pricing Models in Variable Categories** like "Furniture" and "Milk Products" where there's significant price variability, to balance profit margins with customer demand.
+3.  **Leverage seasonal trends** for inventory and marketing optimization.
+4.  **Personalize marketing** using RFM analysis to target high-value and at-risk customers.
+5.  **Introduce premium products** to capitalize on higher-priced items.
+6.  **Monitor price elasticity** for specific categories implement dynamic pricing strategies that can adjust to changes in demand and supply conditions..
+7.  **New Product Introductions** in category sales to identify potential gaps in the product line that could be filled with new product introductions or expansions.
+8.  **Premium vs. Budget Customer Focus** and loyalty programs or premium services for high-spending customers to enhance customer retention and value.
+9.  **Promotional Discounts** in categories with high price variability or higher-end products to attract more customers and increase sales volumes, particularly during off-peak periods.
+10. **Enhance Online Presence (e-commerce platform)**, given the variability in purchasing behavior and the potential for high transaction volumes online, to cater to an increasingly digital customer base. Implement features like personalized recommendations, online-exclusive products, or enhanced delivery options.
+11. **Predictive Analytics** to forecast sales trends, manage inventory more effectively, and anticipate customer buying patterns.
+12. **Customer Feedback Integration** into product pricing and stocking decisions. Use data analytics to monitor customer satisfaction and adjust offerings accordingly.
+
+These recommendations are designed to leverage insights gained from the data visualizations to enhance operational efficiency, increase sales, and improve customer satisfaction. Tailoring strategies based on detailed data analysis can provide a competitive edge and foster more informed decision-making processes.
+
+The findings and recommendations provided in this report serve as a foundation for informed decision-making and strategic planning.
