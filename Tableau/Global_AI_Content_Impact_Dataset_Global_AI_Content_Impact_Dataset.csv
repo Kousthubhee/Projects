@@ -1,0 +1,201 @@
+﻿Country,Industry,Industry Filter,Regulation Status,Regulation Status Filter,Revenue Increase Due to AI (%),Top AI Tools Used,Year,Year Filter,AI Adoption Rate (%),AI-Generated Content Volume (TBs per year),Average AI Adoption Rate by Industry and Year,Avg AI Adoption Rate by Country and Year,Avg AI Adoption Rate by Year,Avg Consumer Trust by Top AI Tools,Avg Market Share by Country,Consumer Trust in AI (%),Dummy,Human-AI Collaboration Rate (%),Job Loss Due to AI (%),Job Loss to Collaboration Ratio,Market Share of AI Companies (%)
+South Korea,Media,False,Strict,False,46,Bard,01-01-2022,True,44,33,44,44,44,41,19,41,0,75,17,0.226666667,19
+China,Legal,False,Strict,False,52,DALL-E,01-01-2025,False,35,67,35,35,35,36,35,36,0,26,47,1.807692308,35
+USA,Automotive,False,Moderate,False,46,Stable Diffusion,01-01-2022,True,81,96,81,81,81,54,23,54,0,40,11,0.275,23
+France,Legal,False,Moderate,False,78,Claude,01-01-2021,False,85,94,85,85,85,52,2,52,0,29,28,0.965517241,2
+France,Gaming,False,Strict,False,1,Midjourney,01-01-2021,False,79,46,79,79,79,42,21,42,0,22,17,0.772727273,21
+USA,Retail,False,Lenient,True,28,ChatGPT,01-01-2021,False,67,48,67,67,67,68,8,68,0,64,1,0.015625,8
+Australia,Media,False,Moderate,False,53,Claude,01-01-2023,False,68,6,68,68,68,72,15,72,0,53,6,0.113207547,15
+UK,Gaming,False,Moderate,False,56,ChatGPT,01-01-2023,False,91,34,91,91,91,47,29,47,0,60,42,0.7,29
+Canada,Education,False,Moderate,False,52,Claude,01-01-2025,False,17,88,17,17,17,61,23,61,0,65,5,0.076923077,23
+China,Healthcare,True,Moderate,False,41,Stable Diffusion,01-01-2025,False,26,19,26,26,26,51,40,51,0,65,15,0.230769231,40
+USA,Retail,False,Moderate,False,74,Synthesia,01-01-2023,False,12,92,12,12,12,66,29,66,0,58,26,0.448275862,29
+India,Gaming,False,Strict,False,29,ChatGPT,01-01-2023,False,39,78,39,39,39,40,23,40,0,78,31,0.397435897,23
+France,Marketing,False,Strict,False,13,Midjourney,01-01-2020,False,71,78,71,71,71,57,38,57,0,32,17,0.53125,38
+France,Legal,False,Lenient,True,71,Bard,01-01-2021,False,26,86,26,26,26,64,30,64,0,36,48,1.333333333,30
+USA,Gaming,False,Moderate,False,12,Stable Diffusion,01-01-2025,False,50,50,50,50,50,57,6,57,0,40,14,0.35,6
+Japan,Legal,False,Lenient,True,51,Stable Diffusion,01-01-2024,False,68,97,68,68,68,33,8,33,0,23,9,0.391304348,8
+Germany,Education,False,Strict,False,74,Stable Diffusion,01-01-2022,True,44,53,44,44,44,57,25,57,0,74,32,0.432432432,25
+UK,Manufacturing,False,Lenient,True,38,Synthesia,01-01-2025,False,65,49,65,65,65,78,21,78,0,82,36,0.439024390,21
+Japan,Healthcare,True,Strict,False,28,Midjourney,01-01-2022,True,63,25,63,63,63,56,31,56,0,54,28,0.518518519,31
+France,Marketing,False,Lenient,True,72,Stable Diffusion,01-01-2025,False,63,7,63,63,63,44,42,44,0,64,22,0.34375,42
+Canada,Gaming,False,Strict,False,72,Midjourney,01-01-2025,False,95,18,95,95,95,72,35,72,0,67,14,0.208955224,35
+South Korea,Healthcare,True,Lenient,True,33,Midjourney,01-01-2025,False,44,88,44,44,44,77,41,77,0,73,40,0.547945205,41
+Japan,Marketing,False,Lenient,True,21,DALL-E,01-01-2023,False,13,5,13,13,13,38,5,38,0,76,19,0.25,5
+France,Media,False,Lenient,True,18,Synthesia,01-01-2022,True,50,6,50,50,50,79,28,79,0,35,23,0.657142857,28
+France,Media,False,Moderate,False,14,Synthesia,01-01-2023,False,88,5,88,88,88,59,36,59,0,36,36,1,36
+France,Automotive,False,Moderate,False,44,Synthesia,01-01-2020,False,80,20,80,80,80,45,14,45,0,83,39,0.469879518,14
+USA,Retail,False,Strict,False,23,Midjourney,01-01-2020,False,26,74,26,26,26,45,3,45,0,65,22,0.338461538,3
+Germany,Finance,False,Lenient,True,4,Claude,01-01-2022,True,88,13,88,88,88,34,32,34,0,25,13,0.52,32
+France,Media,False,Moderate,False,50,Synthesia,01-01-2021,False,43,44,43,43,43,55,47,55,0,47,9,0.191489362,47
+India,Retail,False,Lenient,True,33,DALL-E,01-01-2025,False,33,25,33,33,33,71,20,71,0,74,9,0.121621622,20
+Canada,Retail,False,Lenient,True,19,Bard,01-01-2022,True,67,66,67,67,67,48,22,48,0,41,9,0.219512195,22
+India,Automotive,False,Strict,False,24,DALL-E,01-01-2022,True,28,34,28,28,28,57,14,57,0,35,18,0.514285714,14
+Japan,Retail,False,Moderate,False,19,Stable Diffusion,01-01-2025,False,45,44,45,45,45,54,46,54,0,25,33,1.32,46
+Japan,Media,False,Moderate,False,50,Claude,01-01-2023,False,72,72,72,72,72,43,28,43,0,33,18,0.545454545,28
+India,Gaming,False,Moderate,False,65,Synthesia,01-01-2025,False,17,9,17,17,17,60,16,60,0,23,28,1.217391304,16
+South Korea,Marketing,False,Lenient,True,52,Stable Diffusion,01-01-2023,False,75,55,75,75,75,42,12,42,0,85,22,0.258823529,12
+UK,Gaming,False,Moderate,False,68,DALL-E,01-01-2024,False,78,3,78,78,78,31,41,31,0,66,15,0.227272727,41
+Japan,Media,False,Strict,False,18,Claude,01-01-2023,False,28,14,28,28,28,30,42,30,0,43,36,0.837209302,42
+USA,Manufacturing,False,Moderate,False,59,Stable Diffusion,01-01-2022,True,45,26,45,45,45,33,43,33,0,75,49,0.653333333,43
+Germany,Marketing,False,Lenient,True,68,Claude,01-01-2021,False,81,4,81,81,81,42,39,42,0,77,34,0.441558442,39
+Japan,Manufacturing,False,Lenient,True,7,Claude,01-01-2022,True,41,22,41,41,41,61,33,61,0,40,10,0.25,33
+China,Manufacturing,False,Moderate,False,66,Midjourney,01-01-2024,False,49,90,49,49,49,31,25,31,0,60,35,0.583333333,25
+Australia,Gaming,False,Lenient,True,44,Claude,01-01-2025,False,63,61,63,63,63,80,47,80,0,20,37,1.85,47
+Japan,Legal,False,Moderate,False,17,Midjourney,01-01-2022,True,57,94,57,57,57,89,8,89,0,20,37,1.85,8
+South Korea,Retail,False,Strict,False,2,Midjourney,01-01-2024,False,27,95,27,27,27,54,49,54,0,72,50,0.694444444,49
+South Korea,Media,False,Strict,False,12,Claude,01-01-2024,False,26,53,26,26,26,56,43,56,0,47,16,0.340425532,43
+France,Media,False,Strict,False,31,Stable Diffusion,01-01-2020,False,20,2,20,20,20,36,24,36,0,52,2,0.038461538,24
+USA,Manufacturing,False,Moderate,False,35,Claude,01-01-2021,False,83,66,83,83,83,48,47,48,0,47,24,0.510638298,47
+Canada,Media,False,Moderate,False,21,DALL-E,01-01-2023,False,61,18,61,61,61,88,29,88,0,48,48,1,29
+Australia,Gaming,False,Strict,False,74,Claude,01-01-2022,True,90,80,90,90,90,79,18,79,0,52,25,0.480769231,18
+USA,Media,False,Lenient,True,64,DALL-E,01-01-2025,False,33,76,33,33,33,49,5,49,0,77,13,0.168831169,5
+South Korea,Automotive,False,Lenient,True,61,Bard,01-01-2020,False,31,83,31,31,31,85,38,85,0,56,37,0.660714286,38
+Australia,Retail,False,Strict,False,72,ChatGPT,01-01-2023,False,91,67,91,91,91,54,29,54,0,55,7,0.127272727,29
+USA,Gaming,False,Lenient,True,56,ChatGPT,01-01-2022,True,93,43,93,93,93,47,21,47,0,51,13,0.254901961,21
+France,Manufacturing,False,Lenient,True,35,ChatGPT,01-01-2020,False,93,51,93,93,93,65,9,65,0,78,37,0.474358974,9
+China,Media,False,Lenient,True,3,Midjourney,01-01-2022,True,26,38,26,26,26,55,38,55,0,65,22,0.338461538,38
+Germany,Healthcare,True,Moderate,False,60,ChatGPT,01-01-2023,False,89,31,89,89,89,70,31,70,0,47,31,0.659574468,31
+India,Finance,False,Moderate,False,30,Claude,01-01-2024,False,50,18,50,50,50,32,27,32,0,21,7,0.333333333,27
+Australia,Gaming,False,Moderate,False,11,DALL-E,01-01-2021,False,76,76,76,76,76,66,7,66,0,62,43,0.693548387,7
+UK,Gaming,False,Lenient,True,6,Midjourney,01-01-2025,False,28,4,28,28,28,55,4,55,0,50,3,0.06,4
+Canada,Marketing,False,Lenient,True,17,Midjourney,01-01-2020,False,41,2,41,41,41,70,38,70,0,36,34,0.944444444,38
+Japan,Education,False,Strict,False,58,ChatGPT,01-01-2021,False,38,41,38,38,38,80,25,80,0,81,23,0.283950617,25
+Germany,Manufacturing,False,Moderate,False,7,DALL-E,01-01-2021,False,20,99,20,20,20,81,6,81,0,80,4,0.05,6
+India,Media,False,Strict,False,68,Stable Diffusion,01-01-2022,True,68,35,68,68,68,88,35,88,0,35,1,0.028571429,35
+India,Retail,False,Moderate,False,58,Midjourney,01-01-2025,False,68,68,68,68,68,78,41,78,0,62,9,0.145161290,41
+South Korea,Marketing,False,Moderate,False,53,ChatGPT,01-01-2021,False,45,8,45,45,45,32,49,32,0,80,18,0.225,49
+UK,Legal,False,Strict,False,1,Synthesia,01-01-2020,False,50,51,50,50,50,37,29,37,0,68,1,0.014705882,29
+China,Manufacturing,False,Strict,False,57,Midjourney,01-01-2020,False,45,82,45,45,45,43,39,43,0,57,12,0.210526316,39
+China,Legal,False,Strict,False,1,Midjourney,01-01-2023,False,67,7,67,67,67,43,5,43,0,72,3,0.041666667,5
+Australia,Automotive,False,Strict,False,77,Claude,01-01-2024,False,78,33,78,78,78,71,49,71,0,88,7,0.079545455,49
+USA,Finance,False,Moderate,False,23,Bard,01-01-2023,False,83,5,83,83,83,76,35,76,0,83,41,0.493975904,35
+South Korea,Retail,False,Lenient,True,76,Bard,01-01-2020,False,13,76,13,13,13,64,35,64,0,27,33,1.222222222,35
+China,Education,False,Lenient,True,45,ChatGPT,01-01-2020,False,71,95,71,71,71,65,4,65,0,79,38,0.481012658,4
+Australia,Retail,False,Strict,False,8,ChatGPT,01-01-2022,True,79,20,79,79,79,59,13,59,0,64,1,0.015625,13
+India,Media,False,Moderate,False,41,ChatGPT,01-01-2020,False,44,15,44,44,44,86,35,86,0,38,14,0.368421053,35
+UK,Education,False,Strict,False,1,Midjourney,01-01-2023,False,83,76,83,83,83,36,17,36,0,40,22,0.55,17
+South Korea,Legal,False,Lenient,True,42,Stable Diffusion,01-01-2023,False,75,24,75,75,75,75,11,75,0,55,29,0.527272727,11
+China,Gaming,False,Moderate,False,1,Stable Diffusion,01-01-2021,False,14,51,14,14,14,69,39,69,0,65,50,0.769230769,39
+Japan,Manufacturing,False,Strict,False,50,ChatGPT,01-01-2024,False,83,18,83,83,83,78,5,78,0,24,24,1,5
+India,Education,False,Lenient,True,51,DALL-E,01-01-2021,False,63,82,63,63,63,33,39,33,0,82,7,0.085365854,39
+China,Manufacturing,False,Moderate,False,77,Midjourney,01-01-2020,False,73,2,73,73,73,57,12,57,0,56,48,0.857142857,12
+USA,Retail,False,Moderate,False,28,Claude,01-01-2025,False,27,39,27,27,27,76,17,76,0,77,16,0.207792208,17
+UK,Automotive,False,Strict,False,52,Synthesia,01-01-2022,True,81,68,81,81,81,34,22,34,0,74,42,0.567567568,22
+France,Finance,False,Strict,False,29,Stable Diffusion,01-01-2024,False,73,94,73,73,73,30,49,30,0,57,26,0.456140351,49
+USA,Marketing,False,Moderate,False,25,Bard,01-01-2025,False,45,43,45,45,45,66,11,66,0,78,3,0.038461538,11
+UK,Gaming,False,Moderate,False,4,Midjourney,01-01-2022,True,90,16,90,90,90,43,32,43,0,33,10,0.303030303,32
+India,Marketing,False,Strict,False,11,Synthesia,01-01-2024,False,55,68,55,55,55,59,45,59,0,49,3,0.061224490,45
+China,Legal,False,Strict,False,79,DALL-E,01-01-2025,False,88,45,88,88,88,79,33,79,0,39,43,1.102564103,33
+Germany,Finance,False,Moderate,False,28,Midjourney,01-01-2020,False,72,22,72,72,72,41,38,41,0,27,38,1.407407407,38
+UK,Gaming,False,Moderate,False,53,Stable Diffusion,01-01-2021,False,88,12,88,88,88,54,49,54,0,60,24,0.4,49
+USA,Gaming,False,Moderate,False,53,Synthesia,01-01-2021,False,67,8,67,67,67,73,9,73,0,50,41,0.82,9
+Japan,Manufacturing,False,Moderate,False,32,Claude,01-01-2022,True,29,50,29,29,29,52,30,52,0,22,40,1.818181818,30
+China,Automotive,False,Lenient,True,76,ChatGPT,01-01-2022,True,47,86,47,47,47,84,33,84,0,38,16,0.421052632,33
+Japan,Retail,False,Moderate,False,71,Midjourney,01-01-2025,False,36,2,36,36,36,86,33,86,0,68,48,0.705882353,33
+Japan,Media,False,Lenient,True,38,Midjourney,01-01-2021,False,76,57,76,76,76,75,49,75,0,33,16,0.484848485,49
+France,Gaming,False,Moderate,False,1,Stable Diffusion,01-01-2024,False,28,71,28,28,28,87,21,87,0,54,49,0.907407407,21
+India,Retail,False,Moderate,False,66,Stable Diffusion,01-01-2025,False,33,4,33,33,33,49,17,49,0,82,15,0.182926829,17
+USA,Retail,False,Lenient,True,9,Claude,01-01-2025,False,38,1,38,38,38,39,12,39,0,25,37,1.48,12
+Germany,Media,False,Moderate,False,33,Midjourney,01-01-2023,False,43,76,43,43,43,87,48,87,0,42,10,0.238095238,48
+South Korea,Healthcare,True,Moderate,False,18,Midjourney,01-01-2021,False,68,38,68,68,68,47,21,47,0,20,22,1.1,21
+Japan,Automotive,False,Strict,False,25,Midjourney,01-01-2025,False,93,45,93,93,93,76,9,76,0,68,15,0.220588235,9
+South Korea,Finance,False,Strict,False,49,Midjourney,01-01-2020,False,19,57,19,19,19,68,13,68,0,83,41,0.493975904,13
+UK,Education,False,Lenient,True,69,Claude,01-01-2020,False,71,65,71,71,71,90,4,90,0,55,24,0.436363636,4
+South Korea,Finance,False,Moderate,False,2,ChatGPT,01-01-2023,False,84,20,84,84,84,71,47,71,0,65,34,0.523076923,47
+Canada,Healthcare,True,Strict,False,10,DALL-E,01-01-2022,True,52,91,52,52,52,64,48,64,0,67,38,0.567164179,48
+USA,Marketing,False,Strict,False,41,Bard,01-01-2024,False,32,44,32,32,32,61,22,61,0,33,0,0,22
+South Korea,Education,False,Moderate,False,26,ChatGPT,01-01-2020,False,43,42,43,43,43,66,10,66,0,39,17,0.435897436,10
+China,Finance,False,Strict,False,9,Midjourney,01-01-2023,False,27,9,27,27,27,84,15,84,0,69,25,0.362318841,15
+USA,Gaming,False,Strict,False,4,Bard,01-01-2025,False,29,33,29,29,29,54,43,54,0,46,14,0.304347826,43
+South Korea,Legal,False,Moderate,False,74,DALL-E,01-01-2024,False,57,92,57,57,57,61,38,61,0,82,30,0.365853659,38
+Australia,Finance,False,Lenient,True,65,Stable Diffusion,01-01-2025,False,36,95,36,36,36,38,21,38,0,83,29,0.349397590,21
+USA,Media,False,Strict,False,57,Claude,01-01-2020,False,28,24,28,28,28,37,13,37,0,61,2,0.032786885,13
+Canada,Manufacturing,False,Lenient,True,67,Midjourney,01-01-2021,False,50,74,50,50,50,89,21,89,0,73,45,0.616438356,21
+France,Media,False,Moderate,False,55,DALL-E,01-01-2025,False,80,87,80,80,80,50,20,50,0,82,12,0.146341463,20
+South Korea,Healthcare,True,Lenient,True,31,Bard,01-01-2021,False,54,95,54,54,54,51,1,51,0,32,4,0.125,1
+Japan,Manufacturing,False,Strict,False,27,Stable Diffusion,01-01-2025,False,92,90,92,92,92,39,21,39,0,25,50,2,21
+Canada,Legal,False,Lenient,True,14,Synthesia,01-01-2022,True,28,95,28,28,28,70,9,70,0,52,29,0.557692308,9
+India,Education,False,Strict,False,16,Bard,01-01-2025,False,67,81,67,67,67,54,47,54,0,60,27,0.45,47
+Germany,Gaming,False,Strict,False,42,Bard,01-01-2023,False,78,70,78,78,78,69,40,69,0,56,22,0.392857143,40
+South Korea,Gaming,False,Lenient,True,6,Claude,01-01-2022,True,75,26,75,75,75,83,29,83,0,59,9,0.152542373,29
+Canada,Legal,False,Lenient,True,77,DALL-E,01-01-2025,False,82,7,82,82,82,33,27,33,0,57,31,0.543859649,27
+China,Media,False,Moderate,False,51,Midjourney,01-01-2021,False,85,40,85,85,85,61,26,61,0,43,35,0.813953488,26
+China,Retail,False,Strict,False,18,DALL-E,01-01-2020,False,82,77,82,82,82,82,24,82,0,33,12,0.363636364,24
+Germany,Healthcare,True,Strict,False,71,Claude,01-01-2024,False,17,53,17,17,17,83,46,83,0,80,46,0.575,46
+Australia,Automotive,False,Moderate,False,36,Claude,01-01-2020,False,14,36,14,14,14,76,3,76,0,77,15,0.194805195,3
+UK,Marketing,False,Strict,False,69,ChatGPT,01-01-2022,True,74,17,74,74,74,34,27,34,0,60,47,0.783333333,27
+USA,Marketing,False,Lenient,True,69,Midjourney,01-01-2021,False,57,57,57,57,57,54,20,54,0,51,16,0.313725490,20
+UK,Healthcare,True,Lenient,True,59,Synthesia,01-01-2025,False,84,7,84,84,84,43,22,43,0,67,23,0.343283582,22
+China,Media,False,Moderate,False,51,Bard,01-01-2020,False,43,53,43,43,43,61,33,61,0,51,43,0.843137255,33
+South Korea,Legal,False,Lenient,True,58,Bard,01-01-2025,False,53,11,53,53,53,79,4,79,0,46,17,0.369565217,4
+Japan,Healthcare,True,Strict,False,49,Stable Diffusion,01-01-2022,True,47,81,47,47,47,33,33,33,0,37,15,0.405405405,33
+Australia,Media,False,Strict,False,48,DALL-E,01-01-2021,False,57,75,57,57,57,49,44,49,0,83,26,0.313253012,44
+UK,Automotive,False,Lenient,True,5,DALL-E,01-01-2022,True,12,28,12,12,12,42,5,42,0,67,22,0.328358209,5
+China,Gaming,False,Moderate,False,23,Bard,01-01-2025,False,70,67,70,70,70,41,8,41,0,58,30,0.517241379,8
+France,Legal,False,Strict,False,19,DALL-E,01-01-2020,False,64,41,64,64,64,45,6,45,0,88,38,0.431818182,6
+Germany,Manufacturing,False,Lenient,True,38,Bard,01-01-2020,False,20,68,20,20,20,59,2,59,0,25,49,1.96,2
+Australia,Marketing,False,Lenient,True,59,DALL-E,01-01-2020,False,34,86,34,34,34,76,38,76,0,32,17,0.53125,38
+China,Manufacturing,False,Moderate,False,26,ChatGPT,01-01-2020,False,93,17,93,93,93,70,45,70,0,84,20,0.238095238,45
+India,Manufacturing,False,Moderate,False,41,Bard,01-01-2021,False,45,49,45,45,45,75,47,75,0,81,47,0.580246914,47
+South Korea,Healthcare,True,Strict,False,2,Claude,01-01-2025,False,87,21,87,87,87,60,42,60,0,84,24,0.285714286,42
+Japan,Retail,False,Lenient,True,48,Claude,01-01-2020,False,19,47,19,19,19,79,19,79,0,34,32,0.941176471,19
+Germany,Media,False,Lenient,True,69,ChatGPT,01-01-2020,False,34,77,34,34,34,58,36,58,0,62,27,0.435483871,36
+UK,Education,False,Moderate,False,50,Stable Diffusion,01-01-2020,False,67,35,67,67,67,36,47,36,0,53,38,0.716981132,47
+India,Retail,False,Lenient,True,1,Stable Diffusion,01-01-2025,False,76,79,76,76,76,70,45,70,0,71,4,0.056338028,45
+UK,Automotive,False,Strict,False,65,Midjourney,01-01-2021,False,46,26,46,46,46,68,34,68,0,53,49,0.924528302,34
+Japan,Manufacturing,False,Lenient,True,48,ChatGPT,01-01-2023,False,79,7,79,79,79,35,39,35,0,44,17,0.386363636,39
+USA,Education,False,Lenient,True,67,Synthesia,01-01-2021,False,73,99,73,73,73,32,31,32,0,88,38,0.431818182,31
+India,Automotive,False,Moderate,False,54,DALL-E,01-01-2020,False,64,5,64,64,64,38,34,38,0,24,41,1.708333333,34
+Australia,Healthcare,True,Strict,False,80,ChatGPT,01-01-2020,False,21,21,21,21,21,45,13,45,0,53,5,0.094339623,13
+China,Finance,False,Lenient,True,77,Synthesia,01-01-2021,False,15,58,15,15,15,82,23,82,0,36,40,1.111111111,23
+France,Automotive,False,Strict,False,43,ChatGPT,01-01-2024,False,16,24,16,16,16,61,48,61,0,37,8,0.216216216,48
+Japan,Media,False,Moderate,False,52,Midjourney,01-01-2022,True,20,4,20,20,20,82,44,82,0,37,21,0.567567568,44
+India,Media,False,Lenient,True,17,Bard,01-01-2024,False,15,31,15,15,15,62,14,62,0,31,45,1.451612903,14
+Australia,Finance,False,Moderate,False,56,Synthesia,01-01-2020,False,70,48,70,70,70,69,9,69,0,75,28,0.373333333,9
+India,Education,False,Moderate,False,15,Stable Diffusion,01-01-2020,False,70,20,70,70,70,48,40,48,0,64,34,0.53125,40
+China,Healthcare,True,Moderate,False,15,Claude,01-01-2023,False,81,61,81,81,81,84,33,84,0,61,32,0.524590164,33
+Canada,Gaming,False,Strict,False,56,Midjourney,01-01-2023,False,32,49,32,32,32,70,22,70,0,79,28,0.354430380,22
+UK,Automotive,False,Lenient,True,29,DALL-E,01-01-2024,False,83,71,83,83,83,34,49,34,0,40,45,1.125,49
+India,Retail,False,Moderate,False,32,Bard,01-01-2020,False,94,28,94,94,94,73,10,73,0,75,48,0.64,10
+Germany,Manufacturing,False,Moderate,False,61,Synthesia,01-01-2020,False,22,37,22,22,22,57,22,57,0,53,42,0.792452830,22
+France,Media,False,Moderate,False,68,ChatGPT,01-01-2024,False,23,39,23,23,23,73,14,73,0,78,44,0.564102564,14
+UK,Automotive,False,Lenient,True,58,Midjourney,01-01-2020,False,63,26,63,63,63,84,6,84,0,64,31,0.484375,6
+France,Gaming,False,Moderate,False,27,Stable Diffusion,01-01-2021,False,55,64,55,55,55,76,33,76,0,25,38,1.52,33
+Canada,Education,False,Strict,False,29,Claude,01-01-2020,False,61,56,61,61,61,31,3,31,0,40,29,0.725,3
+India,Gaming,False,Lenient,True,50,Bard,01-01-2024,False,44,82,44,44,44,82,2,82,0,74,43,0.581081081,2
+Japan,Media,False,Lenient,True,23,Claude,01-01-2020,False,34,4,34,34,34,87,40,87,0,24,29,1.208333333,40
+China,Media,False,Lenient,True,73,Synthesia,01-01-2020,False,35,84,35,35,35,48,23,48,0,65,20,0.307692308,23
+Germany,Marketing,False,Strict,False,2,ChatGPT,01-01-2023,False,21,27,21,21,21,82,45,82,0,47,6,0.127659574,45
+Japan,Marketing,False,Moderate,False,4,Claude,01-01-2023,False,73,51,73,73,73,77,28,77,0,73,40,0.547945205,28
+Canada,Healthcare,True,Lenient,True,24,ChatGPT,01-01-2020,False,68,36,68,68,68,45,15,45,0,40,23,0.575,15
+France,Media,False,Moderate,False,52,ChatGPT,01-01-2020,False,55,41,55,55,55,50,46,50,0,49,29,0.591836735,46
+Australia,Marketing,False,Moderate,False,13,ChatGPT,01-01-2023,False,18,7,18,18,18,73,6,73,0,54,3,0.055555556,6
+Japan,Marketing,False,Moderate,False,26,DALL-E,01-01-2024,False,88,15,88,88,88,59,21,59,0,48,3,0.0625,21
+India,Legal,False,Moderate,False,15,Synthesia,01-01-2025,False,29,93,29,29,29,74,18,74,0,68,43,0.632352941,18
+Canada,Automotive,False,Lenient,True,51,Synthesia,01-01-2022,True,11,28,11,11,11,82,47,82,0,78,43,0.551282051,47
+India,Education,False,Lenient,True,32,Synthesia,01-01-2025,False,47,72,47,47,47,46,20,46,0,35,22,0.628571429,20
+France,Retail,False,Lenient,True,62,Claude,01-01-2022,True,43,19,43,43,43,70,13,70,0,34,22,0.647058824,13
+India,Healthcare,True,Moderate,False,77,Midjourney,01-01-2024,False,60,61,60,60,60,70,31,70,0,28,41,1.464285714,31
+UK,Finance,False,Moderate,False,11,Claude,01-01-2020,False,88,20,88,88,88,33,32,33,0,85,18,0.211764706,32
+USA,Education,False,Strict,False,74,Stable Diffusion,01-01-2021,False,88,41,88,88,88,60,12,60,0,71,29,0.408450704,12
+UK,Education,False,Strict,False,14,ChatGPT,01-01-2021,False,22,77,22,22,22,34,19,34,0,38,33,0.868421053,19
+Germany,Education,False,Strict,False,0,Bard,01-01-2021,False,45,12,45,45,45,51,21,51,0,39,28,0.717948718,21
+Canada,Gaming,False,Strict,False,63,Synthesia,01-01-2020,False,51,16,51,51,51,60,31,60,0,68,47,0.691176471,31
+India,Media,False,Strict,False,61,Stable Diffusion,01-01-2024,False,52,6,52,52,52,44,14,44,0,43,37,0.860465116,14
+Germany,Media,False,Lenient,True,62,Bard,01-01-2021,False,41,42,41,41,41,77,13,77,0,21,21,1,13
+France,Healthcare,True,Strict,False,23,ChatGPT,01-01-2024,False,77,51,77,77,77,85,24,85,0,85,24,0.282352941,24
+India,Automotive,False,Moderate,False,77,ChatGPT,01-01-2020,False,80,36,80,80,80,48,45,48,0,69,30,0.434782609,45
+China,Finance,False,Lenient,True,55,Midjourney,01-01-2022,True,39,63,39,39,39,43,36,43,0,21,26,1.238095238,36
+UK,Gaming,False,Moderate,False,15,Midjourney,01-01-2022,True,30,98,30,30,30,90,13,90,0,50,18,0.36,13
+USA,Finance,False,Moderate,False,71,Bard,01-01-2020,False,37,4,37,37,37,85,30,85,0,22,26,1.181818182,30
+France,Legal,False,Lenient,True,18,Bard,01-01-2023,False,48,57,48,48,48,66,44,66,0,62,1,0.016129032,44
+Canada,Legal,False,Strict,False,44,Midjourney,01-01-2020,False,40,58,40,40,40,46,37,46,0,38,46,1.210526316,37
+Canada,Marketing,False,Moderate,False,5,Synthesia,01-01-2025,False,78,85,78,78,78,64,45,64,0,33,26,0.787878788,45
+South Korea,Gaming,False,Moderate,False,7,ChatGPT,01-01-2025,False,82,36,82,82,82,31,12,31,0,63,28,0.444444444,12
+France,Retail,False,Moderate,False,47,DALL-E,01-01-2025,False,30,60,30,30,30,32,29,32,0,57,25,0.438596491,29
+Germany,Automotive,False,Lenient,True,12,DALL-E,01-01-2021,False,89,53,89,89,89,77,44,77,0,31,48,1.548387097,44
+Germany,Media,False,Strict,False,58,DALL-E,01-01-2020,False,70,28,70,70,70,79,32,79,0,59,28,0.474576271,32
+France,Marketing,False,Lenient,True,79,Synthesia,01-01-2023,False,66,50,66,66,66,82,15,82,0,44,40,0.909090909,15
+Australia,Automotive,False,Strict,False,51,Claude,01-01-2023,False,45,20,45,45,45,47,43,47,0,42,33,0.785714286,43
+South Korea,Healthcare,True,Moderate,False,34,Stable Diffusion,01-01-2020,False,11,21,11,11,11,59,33,59,0,46,24,0.521739130,33
